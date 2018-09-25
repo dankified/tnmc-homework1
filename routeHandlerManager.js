@@ -6,6 +6,6 @@ module.exports = function routeHandler(route) {
 		case 'hello':
 			return helloHandler;
 		default:
-			return notFoundHandler;
+			return null;
 	}
 }
