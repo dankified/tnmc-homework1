@@ -1,4 +1,4 @@
-const url = require('url');
+const queryParser = require('../utils/queryParser');
 
 function setHeaderAndStatus(res) {
 	res.setHeader('Content-Type', 'application/json');
@@ -7,22 +7,25 @@ function setHeaderAndStatus(res) {
 
 function get(req, res) {
 	setHeaderAndStatus(res);
-	res.end(JSON.stringify({done: true}));
+	res.end(JSON.stringify({message: 'get'}));
 }
 
 function post(req, res) {
+	let queryObj = queryParser(req.url);
+	let message = 'Hello there ';
+	message += queryObj.name ? queryObj.name+'!' : 'user!'; 
 	setHeaderAndStatus(res);
-	res.end(JSON.stringify({message: 'Hello there!'}));
+	res.end(JSON.stringify({message}));
 }
 
 function put(req, res) {
 	setHeaderAndStatus(res);
-	res.end(JSON.stringify({message: 'Perform a put request'}));
+	res.end(JSON.stringify({message: 'put'}));
 }
 
 function destroy(req, res) {
 	setHeaderAndStatus(res);
-	res.end(JSON.stringify({message: 'Perform a delete request'}));
+	res.end(JSON.stringify({message: 'delete'}));
 }
 
 function helloHandler(method) {
