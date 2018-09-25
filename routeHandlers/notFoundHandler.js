@@ -8,4 +8,8 @@ function handler(req, res) {
 	res.end(JSON.stringify({url: routeUrl, method}));
 }
 
-module.exports = handler;
+function notFoundHandler() {
+	return handler;
+}
+
+module.exports = notFoundHandler;

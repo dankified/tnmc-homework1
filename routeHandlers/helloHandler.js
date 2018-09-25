@@ -1,5 +1,4 @@
 const url = require('url');
-const notFoundHandler = require('./notFoundHandler');
 
 function setHeaderAndStatus(res) {
 	res.setHeader('Content-Type', 'application/json');
@@ -37,7 +36,7 @@ function helloHandler(method) {
 		case 'delete':
 			return destroy;
 		default:
-			return notFoundHandler;
+			return null;
 	}
 }
 

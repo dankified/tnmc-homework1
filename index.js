@@ -8,7 +8,7 @@ const notFoundHandler = require('./routeHandlers/notFoundHandler');
 const server = http.createServer(function(req, res) {
 	let routeUrl = url.parse(req.url, true).pathname.replace(/^\/+|\/+#/g,'');
 	let method = req.method.toLowerCase();
-	let handler = routeHandlerManager(routeUrl) ? routeHandlerManager(routeUrl)(method) : notFoundHandler;
+	let handler = routeHandlerManager(routeUrl)(method) || notFoundHandler();
 	handler(req, res);
 });
 
