@@ -1,12 +1,9 @@
 const queryParser = require('../utils/queryParser');
+const setHeadersAndStatus = require('../utils/setHeadersAndStatus');
 
-function setHeaderAndStatus(res) {
-	res.setHeader('Content-Type', 'application/json');
-	res.writeHead(200);
-}
 
 function get(req, res) {
-	setHeaderAndStatus(res);
+	setHeadersAndStatus(res, 200, {type:'Content-type', value:'application/json'});
 	res.end(JSON.stringify({message: 'get'}));
 }
 
@@ -14,17 +11,17 @@ function post(req, res) {
 	let queryObj = queryParser(req.url);
 	let message = 'Hello there ';
 	message += queryObj.name ? queryObj.name+'!' : 'user!'; 
-	setHeaderAndStatus(res);
+	setHeadersAndStatus(res, 200, {type:'Content-type', value: 'application/json'});
 	res.end(JSON.stringify({message}));
 }
 
 function put(req, res) {
-	setHeaderAndStatus(res);
+	setHeadersAndStatus(res, 200, {type:'Content-type', value: 'application/json'});
 	res.end(JSON.stringify({message: 'put'}));
 }
 
 function destroy(req, res) {
-	setHeaderAndStatus(res);
+	setHeadersAndStatus(res, 200, {type:'Content-type', value: 'application/json'});
 	res.end(JSON.stringify({message: 'delete'}));
 }
 

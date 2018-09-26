@@ -1,3 +1,8 @@
+/**
+* Parses a url to extract the query object
+* @param {string} url
+*/
+
 function queryParser(url) {
 	let queryStartIndex = url.indexOf('?');
 	let query = url.substring(queryStartIndex+1);
@@ -11,4 +16,3 @@ function queryParser(url) {
 }
 
 module.exports = queryParser;
-
