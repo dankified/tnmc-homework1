@@ -1,7 +1,6 @@
 const queryParser = require('../utils/queryParser');
 const setHeadersAndStatus = require('../utils/setHeadersAndStatus');
 
-
 function get(req, res) {
 	setHeadersAndStatus(res, 200, {type:'Content-type', value:'application/json'});
 	res.end(JSON.stringify({message: 'get'}));
@@ -25,6 +24,11 @@ function destroy(req, res) {
 	res.end(JSON.stringify({message: 'delete'}));
 }
 
+/**
+ * Takes a method and returns one of the defined handlers for that method
+ * Returns null if our handler does not have a route for said method
+ * @param {string} method 
+ */
 function helloHandler(method) {
 	switch(method) {
 		case 'get':
